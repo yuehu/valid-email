@@ -1,0 +1,20 @@
+{
+  "name": "valid-email",
+  "repo": "yuehu/valid-email",
+  "description": "Valid an Email.",
+  "version": "0.0.1",
+  "keywords": [
+    "form",
+    "email",
+    "validator"
+  ],
+  "dependencies": {},
+  "development": {
+    "visionmedia/mocha": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
