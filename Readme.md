@@ -3,6 +3,8 @@
 
 Valid an Email Address.
 
+[![Build Status](https://travis-ci.org/yuehu/valid-email.png?branch=master)](https://travis-ci.org/yuehu/valid-email)
+
 ## Installation
 
 Install with [component(1)](http://component.io):
