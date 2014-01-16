@@ -28,14 +28,14 @@ valid.apiKey = 'pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7';
  */
 
 function remoteValid(email, cb) {
-  var jsonpfunc = 'valid_email_' + new Date().valueOf();
-  window[jsonpfunc] = function(res) {
+  var name = 'valid_email_' + new Date().valueOf();
+  window[name] = function(res) {
     cb(res);
-    delete window[jsonpfunc];
+    delete window[name];
   };
 
   var script = d.createElement('script');
-  var url = BASEURI + '?callback=' + jsonpfunc + '&api_key=' + valid.apiKey;
+  var url = BASEURI + '?callback=' + name + '&api_key=' + valid.apiKey;
   script.src = url + '&address=' + encodeURIComponent(email);
   script.onload = function() {
     d.body.removeChild(script);
