@@ -19,7 +19,13 @@ function valid(email, cb) {
   }
 }
 
+// Default public key from mailgun demo
+// http://mailgun.github.io/validator-demo/
 valid.apiKey = 'pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7';
+
+/**
+ * Use mailgun API to validate email.
+ */
 
 function remoteValid(email, cb) {
   var jsonpfunc = 'valid_email_' + new Date().valueOf();
