@@ -9,19 +9,24 @@ function valid(email, cb) {
       valid: false,
       hint: null
     });
-  } else {
+  } else if (valid.mailgunKey) {
     remoteValid(email, function(res) {
       cb && cb({
         valid: res.is_valid,
         hint: res.did_you_mean
       });
     });
+  } else {
+    cb && cb({
+      valid: true,
+      hint: null
+    });
   }
 }
 
 // Default public key from mailgun demo
 // http://mailgun.github.io/validator-demo/
-valid.apiKey = 'pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7';
+valid.mailgunKey = 'pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7';
 
 /**
  * Use mailgun API to validate email.
@@ -35,7 +40,7 @@ function remoteValid(email, cb) {
   };
 
   var script = d.createElement('script');
-  var url = BASEURI + '?callback=' + name + '&api_key=' + valid.apiKey;
+  var url = BASEURI + '?callback=' + name + '&api_key=' + valid.mailgunKey;
   script.src = url + '&address=' + encodeURIComponent(email);
   script.onload = function() {
     d.body.removeChild(script);

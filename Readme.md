@@ -23,6 +23,10 @@ valid(email, function(res) {
 });
 ```
 
+### .mailgunKey
+
+Reset `valid.mailgunKey` to `null` to disable mailgun email address validation.
+
 ## License
 
 MIT
