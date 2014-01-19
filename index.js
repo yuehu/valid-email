@@ -39,10 +39,16 @@ function remoteValid(email, cb) {
     delete window[name];
   };
 
+  // timeout in 1.5s
+  var timer = setTimeout(function() {
+    cb({is_valid: true, did_you_mean: null});
+  }, 1500);
+
   var script = d.createElement('script');
   var url = BASEURI + '?callback=' + name + '&api_key=' + valid.mailgunKey;
   script.src = url + '&address=' + encodeURIComponent(email);
   script.onload = function() {
+    clearTimeout(timer);
     d.body.removeChild(script);
   };
   d.body.appendChild(script);
