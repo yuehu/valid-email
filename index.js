@@ -1,6 +1,6 @@
 
 var d = document;
-var REGEX = /^.+@[^.].*\.[a-z]{2,10}$/i;
+var REGEX = /^([a-z0-9!#$%&'*+\/=?^_`{|.}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)$/i;
 var MAILGUN_URL = "https://api.mailgun.net/v2/address/validate";
 
 function valid(email, cb) {
