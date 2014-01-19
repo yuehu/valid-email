@@ -23,9 +23,13 @@ valid(email, function(res) {
 });
 ```
 
-### .mailgunKey
+### .MAILGUN_KEY
 
-Reset `valid.mailgunKey` to `null` to disable mailgun email address validation.
+Reset `valid.MAILGUN_KEY` to `null` to disable mailgun email address validation.
+
+```js
+valid.MAILGUN_KEY = null;
+```
 
 ## License
 

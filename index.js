@@ -1,7 +1,7 @@
 
 var d = document;
 var REGEX = /^.+@[^.].*\.[a-z]{2,10}$/i;
-var BASEURI = "https://api.mailgun.net/v2/address/validate";
+var MAILGUN_URL = "https://api.mailgun.net/v2/address/validate";
 
 function valid(email, cb) {
   if (!REGEX.test(email)) {
@@ -9,7 +9,7 @@ function valid(email, cb) {
       valid: false,
       hint: null
     });
-  } else if (valid.mailgunKey) {
+  } else if (valid.MAILGUN_KEY) {
     remoteValid(email, function(res) {
       cb && cb({
         valid: res.is_valid,
@@ -26,7 +26,7 @@ function valid(email, cb) {
 
 // Default public key from mailgun demo
 // http://mailgun.github.io/validator-demo/
-valid.mailgunKey = 'pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7';
+valid.MAILGUN_KEY = 'pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7';
 
 /**
  * Use mailgun API to validate email.
@@ -45,7 +45,7 @@ function remoteValid(email, cb) {
   }, 1500);
 
   var script = d.createElement('script');
-  var url = BASEURI + '?callback=' + name + '&api_key=' + valid.mailgunKey;
+  var url = MAILGUN_URL + '?callback=' + name + '&api_key=' + valid.MAILGUN_KEY;
   script.src = url + '&address=' + encodeURIComponent(email);
   script.onload = function() {
     clearTimeout(timer);
